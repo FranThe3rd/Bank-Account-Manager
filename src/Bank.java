@@ -88,11 +88,34 @@ public class Bank {
      * @return The generated email address.
      */
     public String email_creator() {
-        String[] email_array = {"@gmail.com", "@yahoo.com", "@outlook.com"};
+        String[] email_array = {"@gmail.com", "@yahoo.com", "@outlook.com", "@hotmail.com", "@example.com",
+                "@protonmail.com", "@aol.com", "@icloud.com", "@mail.com", "@msn.com",
+                "@yandex.com", "@zoho.com", "@mailinator.com", "@rocketmail.com",
+                "@inbox.com", "@live.com"};
+
         int index = new Random().nextInt(email_array.length);
         Random random = new Random();
         int number = random.nextInt(50);
         return name.toLowerCase(Locale.ROOT) + Integer.toString(number) + email_array[index];
+    }
+
+    public String random_ethnicity() {
+        String[] ethnicities_array = {
+                "African",
+                "Asian",
+                "European",
+                "Native American",
+                "Pacific Islander",
+                "Middle Eastern",
+                "Latino/Hispanic",
+                "South Asian",
+                "Mixed"
+        };
+        int index = new Random().nextInt(ethnicities_array.length);
+
+        return ethnicities_array[index];
+
+
     }
 
     /**
@@ -106,7 +129,8 @@ public class Bank {
                 "░█▄▄█ █── █── █──█ █──█ █──█ ──█── 　 ░█─ █──█ █▀▀ █──█ ─ \n" +
                 "░█─░█ ▀▀▀ ▀▀▀ ▀▀▀▀ ─▀▀▀ ▀──▀ ──▀── 　 ▄█▄ ▀──▀ ▀── ▀▀▀▀ ▀");
         String email = email_creator();
-        String text = "Name: " + name + "\n" + "Email: " + email + "\n" + "ID: " + customerID;
+        String ethnicity = random_ethnicity();
+        String text = "Name: " + name + "\n" + "Email: " + email + "\n" + "ID: " + customerID + "\n" + "Ethnicity: " + ethnicity;
         System.out.println("\n------------------------------------");
         for (char c : text.toCharArray()) {
             Thread.sleep(50);
@@ -149,11 +173,11 @@ public class Bank {
         System.out.print("Amount To Withdraw: ");
         double amount = scanner.nextDouble();
         System.out.println("------------------------------------");
-        if (allowance <= 0) {
+        if (allowance < 0) {
+            allowance = 0;
             System.out.println("=============================");
             System.out.println("We apologize, but withdrawals are currently unavailable.");
             System.out.println("=============================");
-            allowance = 0;
         } else {
             allowance -= amount;
         }
@@ -180,49 +204,54 @@ public class Bank {
     // Everything Below Here Are The Getter And Setter Methods
 
     /**
-
-     Returns the customer ID associated with this bank account.
-     @return The customer ID.
+     * Returns the customer ID associated with this bank account.
+     *
+     * @return The customer ID.
      */
     public int getCustomerID() {
         return customerID;
     }
-    /**
 
-     Sets the customer ID for this bank account.
-     @param customerID The new customer ID to set.
+    /**
+     * Sets the customer ID for this bank account.
+     *
+     * @param customerID The new customer ID to set.
      */
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
-    /**
 
-     Returns the name of the account holder.
-     @return The name of the account holder.
+    /**
+     * Returns the name of the account holder.
+     *
+     * @return The name of the account holder.
      */
     public String getName() {
         return name;
     }
-    /**
 
-     Sets the name of the account holder.
-     @param name The new name to set for the account holder.
+    /**
+     * Sets the name of the account holder.
+     *
+     * @param name The new name to set for the account holder.
      */
     public void setName(String name) {
         this.name = name;
     }
-    /**
 
-     Returns the current allowance (balance) of the bank account.
-     @return The current allowance (balance) in the account.
+    /**
+     * Returns the current allowance (balance) of the bank account.
+     *
+     * @return The current allowance (balance) in the account.
      */
     public double getAllowance() {
         return allowance;
     }
-    /**
 
-     Sets the new allowance (balance) for the bank account.
-     @param allowance The new allowance (balance) to set for the account.
+    /**
+     * Sets the new allowance (balance) for the bank account.
+     *
+     * @param allowance The new allowance (balance) to set for the account.
      */
     public void setAllowance(double allowance) {
         this.allowance = allowance;

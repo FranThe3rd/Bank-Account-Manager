@@ -8,7 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type Your Name: ");
         String name = scanner.next();
-        Bank bank = new Bank(random.nextInt(10),name,random.nextInt(501) + 500);
+        Bank bank = new Bank(random.nextInt(1) + 100,name,random.nextInt(501) + 500);
 
 
     }
